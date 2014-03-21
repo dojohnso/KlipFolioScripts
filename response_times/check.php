@@ -20,6 +20,7 @@ foreach ( $urls as $i => $url )
     curl_setopt($ch, CURLOPT_URL,            $url);
     curl_setopt($ch, CURLOPT_HEADER,         true);
     curl_setopt($ch, CURLOPT_NOBODY,         true);
+    curl_setopt($ch, CURLOPT_COOKIE,         'first_visit=1395420000;');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
     curl_setopt($ch, CURLOPT_TIMEOUT,        15);
