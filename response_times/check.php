@@ -52,11 +52,15 @@ foreach ( $urls as $i => $url )
     $results[$i]['previous_response_time'] = $history[count($history)-2]['response_time'];
     $results[$i]['value_change'] = $results[$i]['response_time'] - $results[$i]['previous_response_time'];
 
+    $results[$i]['value_change'] = $results[$i]['value_change'] >= 0 ? '+'.$results[$i]['value_change'] : $results[$i]['value_change'];
+
     $results[$i]['percent_change'] = 100;
     if ( $results[$i]['previous_response_time'] )
     {
         $results[$i]['percent_change'] = round( ($results[$i]['value_change']/$results[$i]['previous_response_time']), 2 );
     }
+
+    $results[$i]['percent_change'] = $results[$i]['percent_change'] >= 0 ? '+'.$results[$i]['percent_change'] : $results[$i]['percent_change'];
 
     ftruncate( $h, 0 );
     fwrite( $h, json_encode( $history ) . PHP_EOL );
