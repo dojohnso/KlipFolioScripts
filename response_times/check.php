@@ -35,13 +35,13 @@ foreach ( $urls as $i => $url )
     $history = @fread( $h, filesize($file) );
     $history = json_decode( $history, true ) ?: array();
 
-    $response_time = round( $info['total_time'] * 1000 ); //ms
+    $response_time = (double) round( $info['total_time'] * 1000 ); //ms
 
     // just clean up for the file name
     // log the current timestamp for reference
     $results[$i] = array(
                     'url' => str_replace( array('www.','http://', 'https://'), array('',''), $url ),
-                    'response_time' => $response_time,
+                    'response_time' => number_format( $response_time ),
                     'code' => $info['http_code']
     );
 
@@ -53,6 +53,7 @@ foreach ( $urls as $i => $url )
     $results[$i]['value_change'] = $results[$i]['response_time'] - $results[$i]['previous_response_time'];
 
     $results[$i]['value_change'] = $results[$i]['value_change'] >= 0 ? '+'.$results[$i]['value_change'] : $results[$i]['value_change'];
+    $results[$i]['value_change'] = number_format( $results[$i]['value_change'] );
 
     $results[$i]['percent_change'] = 100;
     if ( $results[$i]['previous_response_time'] )
@@ -61,6 +62,7 @@ foreach ( $urls as $i => $url )
     }
 
     $results[$i]['percent_change'] = $results[$i]['percent_change'] >= 0 ? '+'.$results[$i]['percent_change'] : $results[$i]['percent_change'];
+    $results[$i]['percent_change'] = number_format( $results[$i]['percent_change'] );
 
     ftruncate( $h, 0 );
     fwrite( $h, json_encode( $history ) . PHP_EOL );
