@@ -59,23 +59,23 @@ foreach ( $urls as $i => $url )
         switch ( $last_downtime_ts )
         {
             case $ago < (60): // seconds
-                $last_downtime = round( $ago ) . ' secs';
+                $last_downtime = round( $ago ) . " secs ($code)";
                 break;
 
             case $ago < (60*60): // minutes
-                $last_downtime = round( $ago/60 ) . ' mins';
+                $last_downtime = round( $ago/60 ) . " mins ($code)";
                 break;
 
             case $ago < (60*60*24*3): //  hours
-                $last_downtime = round( $ago/60/24/3, 1 ) . ' hrs';
+                $last_downtime = round( $ago/60/24/3, 1 ) . " hrs ($code)";
                 break;
 
             case $ago < (60*60*24*30): // days
-                $last_downtime = round( $ago/60/60/30, 1 ) . ' days';
+                $last_downtime = round( $ago/60/60/30, 1 ) . " days ($code)";
                 break;
 
             case $ago < (60*60*24*365): // months
-                $last_downtime = round( $ago/60/60/365, 1 ) . ' mnths';
+                $last_downtime = round( $ago/60/60/365, 1 ) . " mnths ($code)";
                 break;
 
             default: // years?
