@@ -47,7 +47,7 @@ foreach ( $urls as $i => $url )
     }
 
     // do some calc to prettify the time strings
-    $last_downtime_info = (int) @file_get_contents($file);
+    $last_downtime_info = @file_get_contents($file);
     list( $last_downtime_ts, $code ) = explode( '|', $last_downtime_info );
     $now = time(); // call "time()" once to avoid skipping to the next second mid run
 
