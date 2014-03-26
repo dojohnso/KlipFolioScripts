@@ -38,7 +38,7 @@ foreach ( $urls as $i => $url )
     }
 
     // just clean up for the file name
-    $file = $path.str_replace( array('http://', '/'), array('',''), $url ).'.txt';
+    $file = $path.str_replace( array('http://', 'https://', '/'), array('',''), $url ).'.txt';
 
     if ( $status == 'Down' )
     {
