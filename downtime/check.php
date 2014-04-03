@@ -22,7 +22,7 @@ foreach ( $urls as $i => $url )
     curl_setopt($ch, CURLOPT_NOBODY,         true);
     curl_setopt($ch, CURLOPT_COOKIE,         'first_visit=1395420000;');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT,        15);
+    curl_setopt($ch, CURLOPT_TIMEOUT,        10);
     $r = curl_exec($ch);
     $info = curl_getinfo($ch);
     $r = split("\n", $r);
