@@ -64,6 +64,8 @@ foreach ( $urls as $i => $url )
 
     $results[$i]['percent_change'] = $results[$i]['percent_change'] >= 0 ? '+'.$results[$i]['percent_change'] : $results[$i]['percent_change'];
 
+    $results[$i]['current_time'] = time();
+
     ftruncate( $h, 0 );
     fwrite( $h, json_encode( $history ) . PHP_EOL );
     fclose( $h );
